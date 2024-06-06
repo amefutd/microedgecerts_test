@@ -1,6 +1,6 @@
 require('dotenv').config();
-require("@nomiclabs/hardhat-ethers");
-require("@nomiclabs/hardhat-etherscan");
+require("@nomicfoundation/hardhat-ethers");
+// require("@nomicfoundation/hardhat-etherscan");
 
 module.exports = {
   defaultNetwork: "polygon_amoy",
@@ -16,7 +16,7 @@ module.exports = {
     apiKey: process.env.POLYGONSCAN_API_KEY
   },
   solidity: {
-    version: "0.8.9",
+    version: "0.8.20",
     settings: {
       optimizer: {
         enabled: true,
