@@ -636,9 +636,14 @@ const contractABI = [
 // Web3のインスタンスを待ってからコントラクトをインスタンス化
 
 document.addEventListener('DOMContentLoaded', async () => {
-    if (window.web3) {
-        const contract = new window.web3.eth.Contract(contractABI, contractAddress);
+    if (window.ethereum) {
+        // MetaMaskのアカウントにアクセス
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
         
+        // Web3のインスタンスを作成
+        const web3 = new Web3(window.ethereum);
+        const contract = new web3.eth.Contract(contractABI, contractAddress);
+
         // var contract = new window.web3.eth.Contract(contractABI).at(contractAddress);
         document.getElementById('issuerForm').addEventListener('submit', async (e) => {
             e.preventDefault();
